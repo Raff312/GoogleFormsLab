@@ -1,0 +1,25 @@
+{
+    "files.exclude": {
+        ".vs": true,
+        "**/*.css": {
+            "when": "$(basename).scss"
+        },
+        "**/*.map": true,
+        "**/*.min.css": {
+            "when": "$(basename).css"
+        },
+        "**/*.user": true,
+        "**/api.xml": true,
+        "**/bin": true,
+        "**/dist": true,
+        "**/node_modules": true,
+        "**/obj": true,
+        "output": true,
+        "**/src/ext_lib": true,
+        "**/src/lib": true,
+        "**/.angular": true
+    },
+    "eslint.workingDirectories": [
+        "./ClientApp"
+    ]
+}
