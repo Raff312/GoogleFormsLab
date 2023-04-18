@@ -7,33 +7,30 @@ import { Observable } from "rxjs";
 @Injectable()
 export class ApiClient {
 
-    private apiRoot: string;
-
     constructor(
         protected http: HttpClient,
         protected router: Router,
         protected zone: NgZone
     ) {
-        this.apiRoot = "https://localhost:7228";
     }
 
     public get(url: string): Promise<any> {
-        const observable = this.http.get(`${this.apiRoot}/${url}`, { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
+        const observable = this.http.get(`/${url}`, { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
         return this.subscribe(observable);
     }
 
     public delete(url: string): Promise<any> {
-        const observable = this.http.delete(`${this.apiRoot}/${url}`, { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
+        const observable = this.http.delete(`/${url}`, { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
         return this.subscribe(observable);
     }
 
     public post(url: string, data: any): Promise<any> {
-        const observable = this.http.post(`${this.apiRoot}/${url}`, JSON.stringify(data), { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
+        const observable = this.http.post(`/${url}`, JSON.stringify(data), { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
         return this.subscribe(observable);
     }
 
     public put(url: string, data: any): Promise<any> {
-        const observable = this.http.put(`${this.apiRoot}/${url}`, JSON.stringify(data), { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
+        const observable = this.http.put(`/${url}`, JSON.stringify(data), { headers: this.getHeaders(), observe: "response", withCredentials: this.getCredentialsOption() });
         return this.subscribe(observable);
     }
 

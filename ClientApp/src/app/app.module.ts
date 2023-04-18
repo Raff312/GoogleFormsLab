@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
@@ -8,15 +8,17 @@ import { ApiClient } from "./services/api.client";
 import { AppState } from "./app.state";
 import { FormComponent } from "./components/form/form.component";
 import { FormsService } from "./services/forms.service";
+import { FormQuestionComponent } from "./components/form-question/form-question.component";
+import { QuestionControlService } from "./services/question-control.service";
+import { QuestionService } from "./services/question.service";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        FormComponent,
+        FormQuestionComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
-        HttpClientModule,
-        FormsModule,
         RouterModule.forRoot([
             {
                 path: "", component: FormComponent
@@ -24,12 +26,18 @@ import { FormsService } from "./services/forms.service";
             {
                 path: "**", redirectTo: ""
             }
-        ])
+        ]),
+        BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         ApiClient,
         AppState,
-        FormsService
+        FormsService,
+        QuestionControlService,
+        QuestionService
     ],
     bootstrap: [AppComponent]
 })

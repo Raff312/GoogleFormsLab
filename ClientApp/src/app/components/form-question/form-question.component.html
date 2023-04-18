@@ -1,0 +1,18 @@
+<div [formGroup]="form" class="mb-3">
+    <label class="form-label" [attr.for]="question.key">{{ question.label }}</label>
+
+    <div [ngSwitch]="question.controlType">
+        <input *ngSwitchCase="'text'" class="form-control"
+            [formControlName]="question.key" [id]="question.key" [type]="question.type"
+        />
+
+        <fieldset *ngSwitchCase="'choice'">
+            <div *ngFor="let opt of question.options; let i = index">
+                <input type="radio" [formControlName]="question.key" [id]="'option' + i" [value]="opt.key" [name]="question.key" />
+                <label [for]="'option' + i">{{ opt.value }}</label>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="error-message" *ngIf="!isValid">{{ question.label }} is required</div>
+</div>

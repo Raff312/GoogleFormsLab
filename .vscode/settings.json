@@ -17,7 +17,8 @@
         "output": true,
         "**/src/ext_lib": true,
         "**/src/lib": true,
-        "**/.angular": true
+        "**/.angular": true,
+        "**/package-lock.json": true
     },
     "eslint.workingDirectories": [
         "./ClientApp"

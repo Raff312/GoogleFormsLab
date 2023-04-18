@@ -19,4 +19,8 @@ export class FormsService {
         return new FormModel(data);
     }
 
+    public async sendForm(id: string, data: unknown): Promise<void> {
+        await this.api.post(`${this.apiRoot}/${id}`, data);
+    }
+
 }

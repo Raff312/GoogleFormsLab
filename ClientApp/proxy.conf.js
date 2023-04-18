@@ -6,18 +6,11 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 const PROXY_CONFIG = [
     {
         context: [
-            "/subjects",
+            "/api",
         ],
         target: target,
         secure: false
     },
-    {
-        context: [
-            "/users",
-        ],
-        target: target,
-        secure: false
-    }
 ];
 
 module.exports = PROXY_CONFIG;

@@ -10,12 +10,12 @@
                     "strict": true
                 },
                 "@schematics/angular:component": {
-                    "prefix": "",
+                    "prefix": "app",
                     "style": "scss",
                     "skipTests": true
                 },
                 "@schematics/angular:directive": {
-                    "prefix": "",
+                    "prefix": "app",
                     "skipTests": true
                 }
             },

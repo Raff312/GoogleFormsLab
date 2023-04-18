@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using GoogleForm.Models;
 using GoogleForm.Interfaces;
+using GoogleForm.Domain;
 
 namespace GoogleForm.Controllers;
 
@@ -12,14 +12,13 @@ public class FormsApiController : ControllerBase {
         _googleFormsService = googleFormsService;
     }
 
-    [HttpPost]
-    public async Task Send([FromBody] FormModel model) {
-        throw new NotImplementedException();
+    [HttpPost("{id}")]
+    public async Task Send(string id, [FromBody] Dictionary<string, string> form) {
+        await _googleFormsService.SendForm(id, form);
     }
 
-    [HttpGet("{id:string}")]
-    public async Task<FormModel?> Get(string id) {
-        var form = await _googleFormsService.GetForm(id);
-        return FormModel.From(form);
+    [HttpGet("{id}")]
+    public async Task<Form?> Get(string id) {
+        return await _googleFormsService.GetForm(id);
     }
 }

@@ -1,1 +1,13 @@
-<p>form works!</p>
+<h2>{{ formTitle }}</h2>
+
+<div *ngIf="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor="let question of questions" class="form-row">
+            <app-form-question [question]="question" [form]="form"></app-form-question>
+        </div>
+
+        <div class="form-row">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Send</button>
+        </div>
+    </form>
+</div>

@@ -6,4 +6,6 @@ public class Form {
     }
 
     public string Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public IList<FormItem> Items { get; set; } = new List<FormItem>();
 }
